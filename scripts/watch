@@ -1,0 +1,5 @@
+#!/bin/bash
+
+watchify src/client.js -v -t babelify -g livereactload -o src/static/x.js &
+livereactload monitor -n src/static/x.js &
+wait
