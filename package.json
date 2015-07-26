@@ -4,9 +4,9 @@
   "description": "example universal app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "./scripts/compile",
     "watch": "./scripts/watch",
-    "start": "./scripts/watch & babel-node src/server"
+    "start": "./scripts/start"
   },
   "author": "Brian LeRoux",
   "license": "ASL2",

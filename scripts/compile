@@ -1,0 +1,2 @@
+#/bin/sh
+browserify src/client.js -t babelify -o src/static/x.js
