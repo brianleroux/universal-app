@@ -1,12 +1,10 @@
 import React from 'react'
-import iso from 'iso'
-import ready from 'domready'
 import alt from './alt'
 import App from './components/app.jsx'
+import About from './components/about.jsx'
+import app from '../lib/client-router'
 
-ready(x=> {
-  iso.bootstrap((state, _, container)=> {
-    alt.bootstrap(JSON.stringify(state))
-    React.render(<App/>, container) 
-  })
-})
+app('/', <App/>)
+app('/about', <About/>)
+
+app.start()

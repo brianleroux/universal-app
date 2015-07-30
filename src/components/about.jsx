@@ -8,8 +8,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('rendering app')
-    return (<Layout><h1>Helo worlds</h1></Layout>)
+    return (<Layout><h1>About Page here</h1></Layout>)
   }
 ///
 }
