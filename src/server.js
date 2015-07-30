@@ -15,7 +15,7 @@ server.get('/about', (req, res)=> {
 })
 
 server.get('/things/:id', (req, res)=> {
-  res.html(<Thing query={req.query} params={req.params}/>, {})
+  res.html(<Thing/>, {})
 })
 
 server.start()

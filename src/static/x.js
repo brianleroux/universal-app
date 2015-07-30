@@ -77,7 +77,7 @@ var NotFound = (function (_React$Component2) {
     _get(Object.getPrototypeOf(NotFound.prototype), 'constructor', this).apply(this, arguments);
   }
 
-  // HACK to run this serverside we need to fake out domready
+  // HACK to run this serverside we need to fake out domready as a noop
 
   _createClass(NotFound, [{
     key: 'render',
@@ -127,17 +127,22 @@ app.Link = Link;
 function getComponent() {
   // turn ?foo=bar into {foo:'bar'}
   var query = _queryString2['default'].parse(location.search);
+  var params = {};
+  var url = { query: query, params: params };
   var key = location.pathname;
   var fast = routes[key];
-  if (fast) return _react2['default'].cloneElement(fast, { query: query });
-  // shit, we now have to search each route
+  if (fast) {
+    return _react2['default'].cloneElement(fast, { url: url });
+  }
+  // less fast, search each route for a match
   var found = false;
   var keys = Object.keys(routes);
   keys.forEach(function (k) {
     var possible = new _urlPattern2['default'](k);
-    var params = possible.match(key);
+    params = possible.match(key);
     if (params) {
-      found = _react2['default'].cloneElement(routes[k], { query: query, params: params });
+      var _url = { query: query, params: params };
+      found = _react2['default'].cloneElement(routes[k], { url: _url });
     }
   });
   return found ? found : _react2['default'].createElement(NotFound, null);
