@@ -1,21 +1,13 @@
 import React from 'react'
-import AppActions from '../actions/app'
 import Header from './header.jsx'
+import app from '../../lib/client-router'
+
+let Link = app.Link
 
 class Layout extends React.Component {
 
   constructor(props) {
     super(props)
-  }
-
-  home(e) {
-    e.preventDefault()
-    AppActions.home()
-  }
-
-  about(e) {
-    e.preventDefault()
-    AppActions.about()
   }
 
   render() {
@@ -24,8 +16,9 @@ class Layout extends React.Component {
       <body id="main">
         <Header/>
 
-        <a href="/" onClick={this.home}>Home</a>
-        <a href="/about" onClick={this.about}>About</a>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/things/thing-guid">A Thing</Link>
 
         {this.props.children}
         <script src="/static/x.js"></script>
