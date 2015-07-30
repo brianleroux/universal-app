@@ -13,7 +13,7 @@ class Layout extends React.Component {
   render() {
     return (
       <html>
-      <body id="main">
+      <body>
         <Header/>
 
         <Link to="/">Home</Link>
@@ -21,6 +21,7 @@ class Layout extends React.Component {
         <Link to="/things/thing-guid">A Thing</Link>
 
         {this.props.children}
+
         <script src="/static/x.js"></script>
       </body>
       </html>

@@ -34,40 +34,9 @@ var _urlPattern2 = _interopRequireDefault(_urlPattern);
 
 var _srcAlt = require('../src/alt');
 
-// HACK to run this serverside we need to fake out domready
+// usage <Link to="/">Text Here</Link>
 
 var _srcAlt2 = _interopRequireDefault(_srcAlt);
-
-var ready = process.browser ? require('domready') : function () {};
-
-// private maps
-var routes = {};
-var listeners = [];
-
-// adds a route
-function app(path, ctrl) {
-  routes[path] = ctrl;
-}
-
-// adds a listener for route changes
-app.listen = function (listener) {
-  return listeners.push(listener);
-};
-
-// navigates to a route
-app.navigate = function (path) {
-  var title = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
-  var state = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
-
-  // first change the url
-  history.pushState(state, title, path);
-  // then we can notify listeners to do their thing
-  listeners.forEach(function (l) {
-    return l(path, title, state);
-  });
-};
-
-// usage <Link to="/">Text Here</Link>
 
 var Link = (function (_React$Component) {
   _inherits(Link, _React$Component);
@@ -108,6 +77,8 @@ var NotFound = (function (_React$Component2) {
     _get(Object.getPrototypeOf(NotFound.prototype), 'constructor', this).apply(this, arguments);
   }
 
+  // HACK to run this serverside we need to fake out domready
+
   _createClass(NotFound, [{
     key: 'render',
     value: function render() {
@@ -121,6 +92,35 @@ var NotFound = (function (_React$Component2) {
 
   return NotFound;
 })(_react2['default'].Component);
+
+var ready = process.browser ? require('domready') : function () {};
+
+// private maps
+var routes = {};
+var listeners = [];
+
+// adds a route
+function app(path, ctrl) {
+  routes[path] = ctrl;
+}
+
+// adds a listener for route changes
+app.listen = function (listener) {
+  return listeners.push(listener);
+};
+
+// navigates to a route
+app.navigate = function (path) {
+  var title = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
+  var state = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+  // first change the url
+  history.pushState(state, title, path);
+  // then we can notify listeners to do their thing
+  listeners.forEach(function (l) {
+    return l(path, title, state);
+  });
+};
 
 app.Link = Link;
 
@@ -23131,7 +23131,7 @@ var Layout = (function (_React$Component) {
         null,
         _react2['default'].createElement(
           'body',
-          { id: "main" },
+          null,
           _react2['default'].createElement(_headerJsx2['default'], null),
           _react2['default'].createElement(
             Link,
