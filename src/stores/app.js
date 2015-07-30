@@ -6,15 +6,19 @@ let push = (path, title='', state={})=>history.pushState(state, title, path)
 class App {
 
   constructor() {
+    this.title = 'default title'
+    this.url = '/'
     this.bindActions(actions)
   }
 
   home() {
-    push('/')  
+    this.url = '/'
+    push(this.url)  
   }
 
   about() {
-    push('/about')
+    this.url = '/about'
+    push(this.url)
   }
 ///
 }

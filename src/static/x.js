@@ -22521,10 +22521,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _alt = require('./alt');
-
-var _alt2 = _interopRequireDefault(_alt);
-
 var _componentsAppJsx = require('./components/app.jsx');
 
 var _componentsAppJsx2 = _interopRequireDefault(_componentsAppJsx);
@@ -22543,7 +22539,7 @@ var _libClientRouter2 = _interopRequireDefault(_libClientRouter);
 _libClientRouter2['default'].start();
 
 ;require("livereactload/lib/browser/reloadify-exports")("/Users/brianleroux/Desktop/universal-app/src/client.js", module);
-},{"../lib/client-router":1,"./alt":192,"./components/about.jsx":194,"./components/app.jsx":195,"livereactload/lib/browser/add-reactload-deps":18,"livereactload/lib/browser/reloadify-exports":25,"react":190,"react/lib/ReactMount":105}],194:[function(require,module,exports){
+},{"../lib/client-router":1,"./components/about.jsx":194,"./components/app.jsx":195,"livereactload/lib/browser/add-reactload-deps":18,"livereactload/lib/browser/reloadify-exports":25,"react":190,"react/lib/ReactMount":105}],194:[function(require,module,exports){
 ;require("livereactload/lib/browser/add-reactload-deps")({"reloadPort":4474,"notifyPort":4475}, require("react"), require("react/lib/ReactMount"));;require=(function(req){if(typeof(window)!=="undefined"){return(function(name){if(name==="react")return(function(){window.__livereactload=window.__livereactload||{};window.__livereactload.React=window.__livereactload.React||req("react");return(window.__livereactload.reactWithHotClasses(window.__livereactload,"/Users/brianleroux/Desktop/universal-app/src/components/about.jsx"));})();if(name==="react/addons")return(function(){window.__livereactload=window.__livereactload||{};window.__livereactload.ReactAddons=window.__livereactload.ReactAddons||window.__livereactload.weaveAddons(req("react/addons"));return(window.__livereactload.ReactAddons);})();if(name==="react/lib/ReactMount")return(function(){window.__livereactload=window.__livereactload||{};window.__livereactload.ReactMount=window.__livereactload.ReactMount||req("react/lib/ReactMount");return(window.__livereactload.ReactMount);})();if(name&&name.indexOf("react/")===0)return(function(name){window.__livereactload=window.__livereactload||{};window.__livereactload["__reactExport_"+name]=window.__livereactload["__reactExport_"+name]||req(name);return(window.__livereactload["__reactExport_"+name]);})(name);return(req(name));})}else{return(req(name));}})(require);'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -22638,7 +22634,6 @@ var App = (function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      console.log('rendering app');
       return _react2['default'].createElement(
         _layoutJsx2['default'],
         null,
@@ -22825,18 +22820,22 @@ var App = (function () {
   function App() {
     _classCallCheck(this, App);
 
+    this.title = 'default title';
+    this.url = '/';
     this.bindActions(_actionsApp2['default']);
   }
 
   _createClass(App, [{
     key: 'home',
     value: function home() {
-      push('/');
+      this.url = '/';
+      push(this.url);
     }
   }, {
     key: 'about',
     value: function about() {
-      push('/about');
+      this.url = '/about';
+      push(this.url);
     }
 
     ///
